@@ -1,0 +1,28 @@
+{
+  "name": "blue-team-status",
+  "version": "0.0.1",
+  "description": "Add a description",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "dev-start": "nodemon --exec npm start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bepsoccer/blue-team-status.git"
+  },
+  "author": "Brad Parker",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bepsoccer/blue-team-status/issues"
+  },
+  "homepage": "https://github.com/bepsoccer/blue-team-status#readme",
+  "devDependencies": {
+    "nodemon": "^1.17.3"
+  },
+  "dependencies": {
+    "express": "^4.16.3",
+    "lifx-api": "^1.0.1"
+  }
+}

@@ -1,0 +1,49 @@
+{
+	"bulb": [
+		{
+			"team": 1,
+			"id": "330057",
+			"token": "c56d9702ac4811f08193a59ef1e313660f2eb4d8afd04e8da33c6d1701742635"
+		},
+		{
+			"team": 2,
+			"id": "32de08",
+			"token": "cf226415d94718a0694a10a8dc09a1a3348fb2be6e8f787fd47e418c6d65b766"
+		},
+		{
+			"team": 3,
+			"id": "32e2f8",
+			"token": "c00bb0d87958581ef5117d605d9aaf3b2fa0eb7cdc5e1e2fc9763bd3e7099e35"
+		},
+		{
+			"team": 4,
+			"id": "32b9ad",
+			"token": "cb2124bc92351be047e1484d9ca887ddb3d82ce97b6c67ed1c14cc4a13dbf4f1"
+		},
+		{
+			"team": 5,
+			"id": "327104",
+			"token": "c2be0550bdd746577fa1268eebf0ceb0556031f6fa2824ce374f918af8279b39"
+		},
+		{
+			"team": 6,
+			"id": "32e667",
+			"token": "cbbe1909205d122e0dac684fcfc6a68b7d85d82652cf22508fe445d7758598c1"
+		},
+		{
+			"team": 7,
+			"id": "326fbf",
+			"token": "ce546397dec403207c5474328d5ecf0064c9ebe6b2afc4ae8cde7559473140be"
+		},
+		{
+			"team": 8,
+			"id": "328fb3",
+			"token": "c8851b96fd3ff5dc1e13e7e63f2b5b146fb292285bbf0e3044c01219d50ddb4e"
+		},
+		{
+			"team": null,
+			"id": "32ea10",
+			"token": null
+		}
+	]
+}

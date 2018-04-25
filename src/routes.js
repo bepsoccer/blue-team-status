@@ -9,4 +9,7 @@ module.exports = function(app) {
 	app.route('/team/:id')
 		.get(controller.get_team)
 		.post(controller.change_team_status);
+
+	app.route('/demo/status')
+		.post(controller.demo_status);
 };

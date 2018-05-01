@@ -17,12 +17,14 @@ exports.change_team_status = function(req, res) {
 		try {
 			var status = req.body.status.toLowerCase();
 			bulb.status = status;
+			var selector = "id:d073d5"+bulb.id;
+			
 			if (status === "up") {
 				console.log("status of Team" + req.params.id + " is up.");
 				res.json(bulb);
 				
 				//Set bulb color to blue
-				lifx.setColor("id:d073d5"+bulb.id, "#09004D", 1.0, true, function(cb){
+				lifx.setColor(selector, "#09004D", 1.0, true, function(cb){
 					console.log(cb);
 				});
 			}
@@ -31,7 +33,7 @@ exports.change_team_status = function(req, res) {
 				res.json(bulb);
 				
 				//pulse red and set bulb to red
-				lifx.breatheEffect("id:d073d5"+bulb.id, "#FF0000", "#800000", 1, 20, true, true, 0.5, function(cb){
+				lifx.breatheEffect(selector, "#FF0000", "#800000", 1, 20, true, true, 0.5, function(cb){
 					console.log(cb);
 				});
 			}
@@ -53,29 +55,49 @@ exports.get_team = function(req, res) {
 
 exports.demo_status = function(req, res) {
 	var lifx = new lifxObj(settings.bulb[0].token);
+	var selector = "group:HTTF";
 	try {
 		var status = req.body.status.toLowerCase();
-		if (status === "up") {
-			console.log("status of all Teams is up.");
-			res.json(settings.bulb);
-			
-			//Set bulb color to blue
-			lifx.setColor("group:HTTF", "#09004D", 1.0, true, function(cb){
-				console.log(cb);
-			});
-		}
-		else if (status === "down") {
-			console.log("status of all Teams is down.");
-			res.json(settings.bulb);
-			
-			//pulse red and set bulb to red
-			lifx.breatheEffect("group:HTTF", "#FF0000", "#800000", 1, 20, false, true, 0.5, function(cb){
-				console.log(cb);
-			});
-		}
-		else {
-			console.log("invalid status sent");
-			res.status(404).send({"error": status + " is an invalid status"})
+		switch(status) {
+			case "up":
+				console.log("status of all Teams is "+ status);
+				res.json(settings.bulb);
+				
+				//Set all bulbs' color to blue
+				lifx.setColor(selector, "#09004D", 1.0, true, function(cb){
+					console.log(cb);
+				});
+				break;
+			case "down":
+				console.log("status of all Teams is "+ status);
+				res.json(settings.bulb);
+				
+				//Pulse red and set bulbs to red
+				lifx.breatheEffect(selector, "#FF0000", "#800000", 1, 20, true, true, 0.5, function(cb){
+					console.log(cb);
+				});
+				break;
+			case "on":
+				console.log("status of all Teams is "+ status);
+				res.json(settings.bulb);
+
+				//Set all bulbs' state to on and dim white
+				lifx.setColor(selector, "kelvin:6000 brightness:0.08", 1.0, true, function(cb){
+					console.log(cb);
+				});
+				break;
+			case "off":
+				console.log("status of all Teams is "+ status);
+				res.json(settings.bulb);
+
+				//Turn all bulbs off
+				lifx.setPower(selector, "off", 1.0, function(cb){
+					console.log(cb);
+				});
+				break;
+			default:
+				console.log("invalid status sent: \"" + status + "\"");
+				res.status(404).send({"error": status + " is an invalid status"})
 		}
 	}
 	catch(error) {
